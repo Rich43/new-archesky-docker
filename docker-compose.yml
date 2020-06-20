@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 services:
   postgres:
     image: library/postgres:latest
@@ -15,6 +15,11 @@ services:
       DB_PORT: 5432
       DB_USER: postgres
       DB_PASSWORD: Password1
+      DB_DATABASE: postgres
+    links:
+      - postgres
+    depends_on:
+      - postgres
   arangodb:
     image: arangodb/arangodb:latest
     ports:
