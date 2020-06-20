@@ -16,10 +16,14 @@ services:
       DB_USER: postgres
       DB_PASSWORD: Password1
       DB_DATABASE: postgres
+      KEYCLOAK_USER_FILE: /keycloak/KEYCLOAK_USER
+      KEYCLOAK_PASSWORD_FILE: /keycloak/KEYCLOAK_PASS
     links:
       - postgres
     depends_on:
       - postgres
+    volumes:
+      - ./keycloak:/keycloak
   arangodb:
     image: arangodb/arangodb:latest
     ports:
