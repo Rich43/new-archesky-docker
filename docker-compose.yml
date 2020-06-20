@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  postgres:
+    image: library/postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: Password1
+  keycloak:
+    image: jboss/keycloak:latest
+    ports:
+      - 8180:8080
+    environment:
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: Password1
+  arangodb:
+    image: arangodb/arangodb:latest
+    ports:
+      - 8529:8529
+    environment:
+      ARANGO_ROOT_PASSWORD: Password1
