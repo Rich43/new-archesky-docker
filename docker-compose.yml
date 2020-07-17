@@ -37,8 +37,10 @@ services:
       - 8080:8080
     links:
       - arangodb
+      - auth-server
     depends_on:
       - arangodb
+      - auth-server
     environment:
       arangodb.host: arangodb
       archesky.auth.library.server.url: http://auth-server:9090/graphql
