@@ -31,3 +31,24 @@ services:
       - 8529:8529
     environment:
       ARANGO_ROOT_PASSWORD: Password1
+  content-server:
+    image: pynguins/archesky-content-server:latest
+    ports:
+      - 8080:8080
+    links:
+      - arangodb
+    depends_on:
+      - arangodb
+    environment:
+      arangodb.host: arangodb
+  auth-server:
+    image: pynguins/archesky-auth-server:latest
+    ports:
+      - 9090:9090
+    links:
+      - keycloak
+    depends_on:
+      - keycloak
+    environment:
+      openid.connect.certificate.url: http://keycloak:8180/auth/realms/Archesky/protocol/openid-connect/certs
+      openid.connect.issuer: http://keycloak:8180/auth/realms/Archesky
