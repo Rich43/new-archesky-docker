@@ -1,22 +1,5 @@
 version: "3.7"
 services:
-  zookeeper:
-    image: wurstmeister/zookeeper:latest
-    ports:
-      - "2181:2181"
-  kafka:
-    image: wurstmeister/kafka:latest
-    ports:
-      - "9092"
-    links:
-      - zookeeper
-    depends_on:
-      - zookeeper
-    environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
   postgres:
     image: library/postgres:latest
     ports:
@@ -55,13 +38,9 @@ services:
     links:
       - arangodb
       - auth-server
-      - kafka
-      - zookeeper
     depends_on:
       - arangodb
       - auth-server
-      - kafka
-      - zookeeper
     environment:
       arangodb.host: arangodb
       archesky.auth.library.server.url: http://auth-server:9090/graphql
