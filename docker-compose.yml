@@ -18,13 +18,10 @@ services:
       DB_DATABASE: postgres
       KEYCLOAK_USER: root
       KEYCLOAK_PASSWORD: Password1
-      KEYCLOAK_IMPORT: /keycloak/archesky.json
     links:
       - postgres
     depends_on:
       - postgres
-    volumes:
-      - ./keycloak:/keycloak
   arangodb:
     image: arangodb/arangodb:latest
     ports:
