@@ -223,5 +223,21 @@
     "clientSessionMaxLifespan": "0"
   },
   "keycloakVersion": "10.0.2",
-  "userManagedAccessAllowed": false
+  "userManagedAccessAllowed": false,
+  "users": [
+    {
+      "email": "test_user@example.com",
+      "enabled": true,
+      "firstName": "test",
+      "lastName": "user",
+      "username": "test user",
+      "credentials": [
+        {
+          "temporary": false,
+          "type": "password",
+          "value": "Password1"
+        }
+      ]
+    }
+  ]
 }
