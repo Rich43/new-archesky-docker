@@ -32,15 +32,18 @@ response = requests.post(
 )
 
 token = response.json()['access_token']
-headers = {'Authorization': f"Bearer {token}"}
+headers = {
+    'Authorization': f"Bearer {token}",
+    "Content-Type": "application/json"
+}
 data: str = open("archesky.json").read()
 data = data.replace("$domainname", args.domain)
 data = data.replace("$port", args.port)
 
 response = requests.post(
-    f"{args.url}/auth",
+    f"{args.url}/auth/admin/realms",
     data,
     headers=headers
 )
 
-print(response.text)
+print("Realm Added.")
