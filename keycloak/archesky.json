@@ -1,6 +1,6 @@
 {
-  "id": "Archesky",
-  "realm": "Archesky",
+  "id": "archesky_$domainname",
+  "realm": "archesky_$domainname",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -451,7 +451,7 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/Archesky/account/",
+      "baseUrl": "/realms/archesky_$domainname/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
@@ -462,7 +462,7 @@
         "manage-account"
       ],
       "redirectUris": [
-        "/realms/Archesky/account/*"
+        "/realms/archesky_$domainname/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -498,14 +498,14 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/Archesky/account/",
+      "baseUrl": "/realms/archesky_$domainname/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
       "redirectUris": [
-        "/realms/Archesky/account/*"
+        "/realms/archesky_$domainname/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -590,18 +590,18 @@
     {
       "id": "22dafa9b-5165-4aba-88d9-da044054dc26",
       "clientId": "archesky",
-      "rootUrl": "http://localhost:3000",
-      "adminUrl": "http://localhost:3000",
+      "rootUrl": "http://$domainname$port",
+      "adminUrl": "http://$domainname$port",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
       "redirectUris": [
-        "http://localhost:3000/*"
+        "http://$domainname$port/*"
       ],
       "webOrigins": [
-        "http://localhost:3000"
+        "http://$domainname$port"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -732,14 +732,14 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/Archesky/console/",
+      "baseUrl": "/admin/archesky_$domainname/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
       "redirectUris": [
-        "/admin/Archesky/console/*"
+        "/admin/archesky_$domainname/console/*"
       ],
       "webOrigins": [
         "+"
