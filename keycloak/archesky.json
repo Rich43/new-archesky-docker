@@ -184,7 +184,7 @@
       "enabled": true,
       "firstName": "test",
       "lastName": "user",
-      "username": "test user",
+      "username": "test_user",
       "credentials": [
         {
           "temporary": false,
