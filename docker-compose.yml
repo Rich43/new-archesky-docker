@@ -53,4 +53,4 @@ services:
       - keycloak
     environment:
       openid.connect.certificate.url: http://keycloak:8080/auth/realms/archesky_%s/protocol/openid-connect/certs
-      openid.connect.issuer: http://localhost:8180/auth/realms/archesky_%s
+      openid.connect.issuer: http://localhost:3000/auth/realms/archesky_%s
