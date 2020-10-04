@@ -4,7 +4,6 @@ metadata:
   annotations:
     kompose.cmd: ./kompose convert
     kompose.version: 1.21.0 (992df58d8)
-  creationTimestamp: null
   labels:
     io.kompose.service: content-server
   name: content-server
@@ -18,5 +17,3 @@ spec:
     targetPort: 8443
   selector:
     io.kompose.service: content-server
-status:
-  loadBalancer: {}
