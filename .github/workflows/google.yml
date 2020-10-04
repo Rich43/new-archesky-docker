@@ -19,7 +19,6 @@ env:
   GKE_CLUSTER: archesky
   GKE_ZONE: us-west1-a
   DEPLOYMENT_NAME: archesky
-  IMAGE: static-site # del me
 
 jobs:
   setup-build-publish-deploy:
