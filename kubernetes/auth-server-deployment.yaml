@@ -21,7 +21,7 @@ spec:
               value: http://keycloak:8080/auth/realms/archesky_%s/protocol/openid-connect/certs
             - name: openid.connect.issuer
               value: http://localhost:3000/auth/realms/archesky_%s
-          image: docker.pkg.github.com/rich43/archesky-auth-server/archesky-auth-server:0.0.283094786-snapshot
+          image: gcr.io/archesky/archesky-auth-server:latest
           imagePullPolicy: ""
           name: auth-server
           ports:
