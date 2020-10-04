@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.21.0 (992df58d8)
   labels:
     io.kompose.service: content-server
   name: content-server
@@ -12,28 +9,24 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: content-server
-  strategy: {}
+  strategy: { }
   template:
     metadata:
-      annotations:
-        kompose.cmd: ./kompose convert
-        kompose.version: 1.21.0 (992df58d8)
       labels:
         io.kompose.service: content-server
     spec:
       containers:
-      - env:
-        - name: arangodb.host
-          value: arangodb
-        - name: archesky.auth.library.server.url
-          value: https://auth-server:9443/graphql
-        image: docker.pkg.github.com/rich43/archesky-content-server/archesky-content-server:0.0.286849009-snapshot
-        imagePullPolicy: ""
-        name: content-server
-        ports:
-        - containerPort: 8080
-        - containerPort: 8443
-        resources: {}
+        - env:
+            - name: arangodb.host
+              value: arangodb
+            - name: archesky.auth.library.server.url
+              value: https://auth-server:9443/graphql
+          image: docker.pkg.github.com/rich43/archesky-content-server/archesky-content-server:0.0.286849009-snapshot
+          imagePullPolicy: ""
+          name: content-server
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443
+          resources: { }
       restartPolicy: Always
       serviceAccountName: ""
-      volumes: null

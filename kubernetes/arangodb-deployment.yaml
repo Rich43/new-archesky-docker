@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.21.0 (992df58d8)
   labels:
     io.kompose.service: arangodb
   name: arangodb
@@ -12,25 +9,21 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: arangodb
-  strategy: {}
+  strategy: { }
   template:
     metadata:
-      annotations:
-        kompose.cmd: ./kompose convert
-        kompose.version: 1.21.0 (992df58d8)
       labels:
         io.kompose.service: arangodb
     spec:
       containers:
-      - env:
-        - name: ARANGO_ROOT_PASSWORD
-          value: Password1
-        image: arangodb/arangodb:latest
-        imagePullPolicy: ""
-        name: arangodb
-        ports:
-        - containerPort: 8529
-        resources: {}
+        - env:
+            - name: ARANGO_ROOT_PASSWORD
+              value: Password1
+          image: arangodb/arangodb:latest
+          imagePullPolicy: ""
+          name: arangodb
+          ports:
+            - containerPort: 8529
+          resources: { }
       restartPolicy: Always
       serviceAccountName: ""
-      volumes: null

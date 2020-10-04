@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.21.0 (992df58d8)
   labels:
     io.kompose.service: postgres
   name: postgres
@@ -12,25 +9,21 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: postgres
-  strategy: {}
+  strategy: { }
   template:
     metadata:
-      annotations:
-        kompose.cmd: ./kompose convert
-        kompose.version: 1.21.0 (992df58d8)
       labels:
         io.kompose.service: postgres
     spec:
       containers:
-      - env:
-        - name: POSTGRES_PASSWORD
-          value: Password1
-        image: library/postgres:latest
-        imagePullPolicy: ""
-        name: postgres
-        ports:
-        - containerPort: 5432
-        resources: {}
+        - env:
+            - name: POSTGRES_PASSWORD
+              value: Password1
+          image: library/postgres:latest
+          imagePullPolicy: ""
+          name: postgres
+          ports:
+            - containerPort: 5432
+          resources: { }
       restartPolicy: Always
       serviceAccountName: ""
-      volumes: null
