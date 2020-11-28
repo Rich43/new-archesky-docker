@@ -21,7 +21,7 @@ spec:
               value: arangodb
             - name: archesky.auth.library.server.url
               value: https://auth-server:9443/graphql
-          image: gcr.io/archesky/archesky-content-server:latest
+          image: dockker.io/pynguins/archesky-content-server:latest
           imagePullPolicy: ""
           name: content-server
           ports:
