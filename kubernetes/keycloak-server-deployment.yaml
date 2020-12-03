@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: keycloak
-  name: keycloak
+    io.kompose.service: keycloak-server
+  name: keycloak-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: keycloak
+      io.kompose.service: keycloak-server
   strategy: { }
   template:
     metadata:
       labels:
-        io.kompose.service: keycloak
+        io.kompose.service: keycloak-server
     spec:
       containers:
         - env:
             - name: DB_ADDR
-              value: postgres
+              value: postgres-server
             - name: DB_DATABASE
               value: postgres
             - name: DB_PASSWORD
@@ -33,7 +33,7 @@ spec:
               value: root
           image: jboss/keycloak:latest
           imagePullPolicy: ""
-          name: keycloak
+          name: keycloak-server
           ports:
             - containerPort: 8080
           resources: { }
