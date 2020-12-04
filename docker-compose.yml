@@ -29,7 +29,7 @@ services:
     environment:
       ARANGO_ROOT_PASSWORD: Password1
   content-server:
-    image: docker.pkg.github.com/rich43/archesky-content-server/archesky-content-server:0.0.${CONTENT_SERVER_RELEASE}-snapshot
+    image: docker.io/pynguins/archesky-content-server:latest
     ports:
       - 8080:8080
       - 8443:8443
@@ -43,7 +43,7 @@ services:
       arangodb.host: arangodb
       archesky.auth.library.server.url: https://auth-server:9443/graphql
   auth-server:
-    image: docker.pkg.github.com/rich43/archesky-auth-server/archesky-auth-server:0.0.${AUTH_SERVER_RELEASE}-snapshot
+    image: docker.io/pynguins/archesky-auth-server:latest
     ports:
       - 9090:9090
       - 9443:9443
