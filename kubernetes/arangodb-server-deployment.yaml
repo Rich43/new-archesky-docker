@@ -2,28 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: postgres
-  name: postgres
+    io.kompose.service: arangodb-server
+  name: arangodb-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: postgres
+      io.kompose.service: arangodb-server
   strategy: { }
   template:
     metadata:
       labels:
-        io.kompose.service: postgres
+        io.kompose.service: arangodb-server
     spec:
       containers:
         - env:
-            - name: POSTGRES_PASSWORD
+            - name: ARANGO_ROOT_PASSWORD
               value: Password1
-          image: library/postgres:latest
+          image: arangodb/arangodb:latest
           imagePullPolicy: ""
-          name: postgres
+          name: arangodb-server
           ports:
-            - containerPort: 5432
+            - containerPort: 8529
           resources: { }
       restartPolicy: Always
       serviceAccountName: ""

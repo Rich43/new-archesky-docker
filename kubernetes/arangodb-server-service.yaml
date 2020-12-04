@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: arangodb
-  name: arangodb
+    io.kompose.service: arangodb-server
+  name: arangodb-server
 spec:
   ports:
     - name: "8529"
       port: 8529
       targetPort: 8529
   selector:
-    io.kompose.service: arangodb
+    io.kompose.service: arangodb-server
