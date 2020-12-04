@@ -1,17 +1,17 @@
 version: "3.7"
 services:
-  postgres:
+  postgres-server:
     image: library/postgres:latest
     ports:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: Password1
-  keycloak:
+  keycloak-server:
     image: jboss/keycloak:latest
     ports:
       - 8180:8080
     environment:
-      DB_ADDR: postgres
+      DB_ADDR: postgres-server
       DB_PORT: 5432
       DB_USER: postgres
       DB_PASSWORD: Password1
@@ -19,10 +19,10 @@ services:
       KEYCLOAK_USER: root
       KEYCLOAK_PASSWORD: Password1
     links:
-      - postgres
+      - postgres-server
     depends_on:
-      - postgres
-  arangodb:
+      - postgres-server
+  arangodb-server:
     image: arangodb/arangodb:latest
     ports:
       - 8529:8529
@@ -34,13 +34,13 @@ services:
       - 8080:8080
       - 8443:8443
     links:
-      - arangodb
+      - arangodb-server
       - auth-server
     depends_on:
-      - arangodb
+      - arangodb-server
       - auth-server
     environment:
-      arangodb.host: arangodb
+      arangodb.host: arangodb-server
       archesky.auth.library.server.url: https://auth-server:9443/graphql
   auth-server:
     image: docker.io/pynguins/archesky-auth-server:latest
@@ -48,9 +48,22 @@ services:
       - 9090:9090
       - 9443:9443
     links:
-      - keycloak
+      - keycloak-server
     depends_on:
-      - keycloak
+      - keycloak-server
     environment:
-      openid.connect.certificate.url: http://keycloak:8080/auth/realms/archesky_%s/protocol/openid-connect/certs
-      openid.connect.issuer: http://localhost:3000/auth/realms/archesky_%s
+      openid.connect.certificate.url: http://keycloak-server:8080/auth/realms/archesky_%s/protocol/openid-connect/certs
+      openid.connect.issuer: http://localhost/auth/realms/archesky_%s
+  demo-server:
+    image: docker.io/pynguins/archesky-demo:latest
+    ports:
+      - 80:80
+    links:
+      - content-server
+      - keycloak-server
+    depends_on:
+      - content-server
+      - keycloak-server
+    environment:
+      DEMO_HOST: content-server
+      KEYCLOAK_HOST: keycloak-server
