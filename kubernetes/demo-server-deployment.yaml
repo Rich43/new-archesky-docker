@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: demo-server
+  name: demo-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: demo-server
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: demo-server
+    spec:
+      containers:
+      - env:
+        - name: DEMO_HOST
+          value: content-server
+        - name: KEYCLOAK_HOST
+          value: keycloak-server
+        image: docker.io/pynguins/archesky-demo:latest
+        imagePullPolicy: ""
+        name: demo-server
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""

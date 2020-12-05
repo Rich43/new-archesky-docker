@@ -9,3 +9,5 @@ resources:
 - auth-server-service.yaml
 - content-server-deployment.yaml
 - content-server-service.yaml
+- demo-server-deployment.yaml
+- demo-server-service.yaml
