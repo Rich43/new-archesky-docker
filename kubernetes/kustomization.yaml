@@ -5,3 +5,6 @@ resources:
 - postgres-server-service.yaml
 - keycloak-server-deployment.yaml
 - keycloak-server-service.yaml
+- auth-server-service.yaml
+- content-server-service.yaml
+
