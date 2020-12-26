@@ -19,6 +19,8 @@ spec:
         - env:
             - name: DB_ADDR
               value: postgres-server
+            - name: DB_VENDOR
+              value: postgres
             - name: DB_DATABASE
               value: postgres
             - name: DB_PASSWORD
