@@ -27,4 +27,4 @@ services:
     environment:
       CHAT_SERVER_HOST: chat-server
     labels:
-      traefik.frontend.rule: chat.pynguins.com
+      traefik.frontend.rule: Host:chat.pynguins.com
