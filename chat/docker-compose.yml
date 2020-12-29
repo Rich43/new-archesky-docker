@@ -32,6 +32,7 @@ services:
       CHAT_SERVER_HOST: chat-server
     labels:
       traefik.frontend.rule: Host:chat.pynguins.com
+      traefik.docker.network: traefik
     networks:
       - traefik
       - chat
