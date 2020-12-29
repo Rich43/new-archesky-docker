@@ -6,6 +6,8 @@ services:
       - 7529:8529
     environment:
       ARANGO_ROOT_PASSWORD: Password1
+    networks:
+      - chat
   chat-server:
     image: docker.io/pynguins/archesky-chat-server:latest
     ports:
@@ -17,7 +19,7 @@ services:
     environment:
       arangodb.host: arangodb
     networks:
-      - traefik
+      - chat
   chat-client:
     image: docker.io/pynguins/chat-client:latest
     ports:
@@ -32,5 +34,7 @@ services:
       traefik.frontend.rule: Host:chat.pynguins.com
     networks:
       - traefik
+      - chat
 networks:
   traefik:
+  chat:
