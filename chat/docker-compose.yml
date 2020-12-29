@@ -16,6 +16,9 @@ services:
       - arangodb
     environment:
       arangodb.host: arangodb
+    networks:
+      - traefik
+      - chat
   chat-client:
     image: docker.io/pynguins/chat-client:latest
     ports:
@@ -28,3 +31,9 @@ services:
       CHAT_SERVER_HOST: chat-server
     labels:
       traefik.frontend.rule: Host:chat.pynguins.com
+    networks:
+      - traefik
+      - chat
+networks:
+  traefik:
+  chat:
