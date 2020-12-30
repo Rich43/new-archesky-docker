@@ -27,6 +27,8 @@ spec:
               value: "5432"
             - name: DB_USER
               value: postgres
+            - name: DB_VENDOR
+              value: postgres
             - name: KEYCLOAK_PASSWORD
               value: Password1
             - name: KEYCLOAK_USER
