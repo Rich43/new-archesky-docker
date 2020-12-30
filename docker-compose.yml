@@ -6,6 +6,8 @@ services:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: Password1
+    networks:
+      - archesky
   keycloak-server:
     image: jboss/keycloak:latest
     ports:
@@ -22,12 +24,16 @@ services:
       - postgres-server
     depends_on:
       - postgres-server
+    networks:
+      - archesky
   arangodb-server:
     image: arangodb/arangodb:latest
     ports:
       - 8529:8529
     environment:
       ARANGO_ROOT_PASSWORD: Password1
+    networks:
+      - archesky
   content-server:
     image: docker.io/pynguins/archesky-content-server:latest
     ports:
@@ -42,6 +48,8 @@ services:
     environment:
       arangodb.host: arangodb-server
       archesky.auth.library.server.url: https://auth-server:9443/graphql
+    networks:
+      - archesky
   auth-server:
     image: docker.io/pynguins/archesky-auth-server:latest
     ports:
@@ -54,6 +62,8 @@ services:
     environment:
       openid.connect.certificate.url: http://keycloak-server:8080/auth/realms/archesky_%s/protocol/openid-connect/certs
       openid.connect.issuer: http://localhost/auth/realms/archesky_%s
+    networks:
+      - archesky
   demo-server:
     image: docker.io/pynguins/archesky-demo:latest
     ports:
@@ -67,3 +77,12 @@ services:
     environment:
       DEMO_HOST: content-server
       KEYCLOAK_HOST: keycloak-server
+    labels:
+      traefik.frontend.rule: Host:pynguins.xyz
+      traefik.docker.network: traefik
+    networks:
+      - traefik
+      - archesky
+networks:
+  traefik:
+  archesky:
