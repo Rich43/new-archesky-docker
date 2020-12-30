@@ -37,8 +37,8 @@ services:
   content-server:
     image: docker.io/pynguins/archesky-content-server:latest
     ports:
-      - 8080:8080
-      - 8443:8443
+      - 7080:8080
+      - 7443:8443
     links:
       - arangodb-server
       - auth-server
