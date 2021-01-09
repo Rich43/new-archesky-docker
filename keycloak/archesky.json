@@ -44,7 +44,23 @@
       "archesky": [
         {
           "id": "753472fb-3570-45ff-9c38-6c45f6a8c59d",
-          "name": "update_content",
+          "name": "create_revision",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
+          "attributes": {}
+        },
+        {
+          "id": "c9d5f830-b1f2-4d93-9e82-d5e8885224ab",
+          "name": "update_html",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
+          "attributes": {}
+        },
+        {
+          "id": "90fd41cf-b836-4d70-a854-21cb0055a79f",
+          "name": "update_display_name",
           "composite": false,
           "clientRole": true,
           "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
@@ -61,6 +77,22 @@
         {
           "id": "7a18a2a7-0b16-4a51-8665-3ac9aad747e4",
           "name": "create_content",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
+          "attributes": {}
+        },
+        {
+          "id": "9b6d4f1c-fa59-48b2-a4bb-60a99f6bfbec",
+          "name": "revert_content",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
+          "attributes": {}
+        },
+        {
+          "id": "de690be4-68ce-4d23-a905-fbce86f53e7e",
+          "name": "toggle_published",
           "composite": false,
           "clientRole": true,
           "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
