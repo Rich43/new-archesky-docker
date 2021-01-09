@@ -194,9 +194,13 @@
       ],
       "clientRoles": {
         "archesky": [
-          "update_content",
+          "create_revision",
+          "update_html",
+          "update_display_name",
           "delete_content",
-          "create_content"
+          "create_content",
+          "revert_content",
+          "toggle_published"
         ]
       }
     }
