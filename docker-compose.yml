@@ -1,5 +1,18 @@
 version: "3.7"
 services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql"
+    environment:
+      MYSQL_ROOT_PASSWORD: Password1
+    networks:
+      - archesky
   postgres-server:
     image: library/postgres:latest
     ports:
@@ -26,63 +39,6 @@ services:
     depends_on:
       - postgres-server
     networks:
-      - archesky
-  arangodb-server:
-    image: arangodb/arangodb:latest
-    ports:
-      - "8529:8529"
-    environment:
-      ARANGO_ROOT_PASSWORD: Password1
-    networks:
-      - archesky
-  content-server:
-    image: docker.io/pynguins/archesky-content-server:latest
-    ports:
-      - "7080:8080"
-      - "7443:8443"
-    links:
-      - arangodb-server
-      - auth-server
-    depends_on:
-      - arangodb-server
-      - auth-server
-    environment:
-      arangodb.host: arangodb-server
-      archesky.auth.library.server.url: https://auth-server:9443/graphql
-    networks:
-      - archesky
-  auth-server:
-    image: docker.io/pynguins/archesky-auth-server:latest
-    ports:
-      - "9090:9090"
-      - "9443:9443"
-    links:
-      - keycloak-server
-    depends_on:
-      - keycloak-server
-    environment:
-      openid.connect.certificate.url: http://keycloak-server:8080/auth/realms/archesky_%s/protocol/openid-connect/certs
-      openid.connect.issuer: http://localhost/auth/realms/archesky_%s
-    networks:
-      - archesky
-  demo-server:
-    image: docker.io/pynguins/archesky-demo:latest
-    ports:
-      - "3080:80"
-    links:
-      - content-server
-      - keycloak-server
-    depends_on:
-      - content-server
-      - keycloak-server
-    environment:
-      DEMO_HOST: content-server
-      KEYCLOAK_HOST: keycloak-server
-    labels:
-      traefik.frontend.rule: Host:pynguins.xyz
-      traefik.docker.network: traefik
-    networks:
-      - traefik
       - archesky
 networks:
   traefik:
