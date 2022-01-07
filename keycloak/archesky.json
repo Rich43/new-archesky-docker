@@ -59,14 +59,6 @@
           "attributes": {}
         },
         {
-          "id": "90fd41cf-b836-4d70-a854-21cb0055a79f",
-          "name": "update_display_name",
-          "composite": false,
-          "clientRole": true,
-          "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
-          "attributes": {}
-        },
-        {
           "id": "e44a499b-26c0-4849-9ad8-1cf2eac0649f",
           "name": "delete_content",
           "composite": false,
@@ -77,14 +69,6 @@
         {
           "id": "7a18a2a7-0b16-4a51-8665-3ac9aad747e4",
           "name": "create_content",
-          "composite": false,
-          "clientRole": true,
-          "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
-          "attributes": {}
-        },
-        {
-          "id": "9b6d4f1c-fa59-48b2-a4bb-60a99f6bfbec",
-          "name": "revert_content",
           "composite": false,
           "clientRole": true,
           "containerId": "22dafa9b-5165-4aba-88d9-da044054dc26",
@@ -228,10 +212,8 @@
         "archesky": [
           "create_revision",
           "update_html",
-          "update_display_name",
           "delete_content",
           "create_content",
-          "revert_content",
           "toggle_published"
         ]
       }
